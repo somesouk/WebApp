@@ -2,26 +2,52 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>User Management</title>
     <style>
-        body, html {
+        /* บังคับให้โครงสร้างหลักขยายเต็มจอ 100% ทุกอุปกรณ์ */
+        html, body {
             margin: 0;
             padding: 0;
-            height: 100%;
-            overflow: hidden;
-        }
-        iframe {
             width: 100%;
             height: 100%;
+            overflow: hidden; /* ป้องกันไม่ให้ตัวเว็บหลักเกิดสโครลบาร์ซ้อน */
+            background-color: #ffffff;
+        }
+
+        /* กล่องคลุม iframe เพื่อแก้ปัญหาการแสดงผลบน iOS/Safari */
+        .iframe-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch; /* ช่วยให้การสไลด์หน้าจอบน iPhone/iPad ลื่นไหล */
+        }
+
+        /* ตั้งค่า iframe ให้ยืดหยุ่นและเต็มจออย่างสมบูรณ์ */
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 100%;
+            max-height: 100%;
             border: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- เปลี่ยน URL ตรง src เป็นลิงก์ Web App ของคุณ -->
-    <iframe src="https://script.google.com/macros/s/AKfycbwZvR8xz2fU0PKNH3P2jPho596cuw09MjFx8rveKkixwL5Zb5s3OskI3HmyGhqESWI6/exec"></iframe>
+    <div class="iframe-container">
+        <iframe src="https://script.google.com/macros/s/AKfycbwZvR8xz2fU0PKNH3P2jPho596cuw09MjFx8rveKkixwL5Zb5s3OskI3HmyGhqESWI6/exec"></iframe>
+    </div>
 
 </body>
 </html>
